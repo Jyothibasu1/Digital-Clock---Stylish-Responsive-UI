@@ -1,0 +1,124 @@
+/* Reset default styles and set up the font */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+}
+
+/* Main container: Full-screen background with a gradient */
+.jyo {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f051d, #4a1e92);  /* Dark purple gradient */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff; /* White text for contrast */
+}
+
+/* Clock container with glassmorphism effect */
+.con {
+    width: 90%;
+    max-width: 600px;  /* Limits max size for large screens */
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);  /* Transparent white for glass effect */
+    border-radius: 15px;  /* Rounded corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(20px);  /* Blurred glass effect */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); /* Soft glow effect */
+    position: relative;
+    overflow: hidden; /* Ensures no content spills outside */
+}
+
+/* Decorative glowing circles */
+.con::before, .con::after {
+    content: '';
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.5;
+}
+
+/* Left pink glow effect */
+.con::before {
+    background: #ff3d77;  /* Neon pink */
+    left: -40px;
+    top: -40px;
+    filter: blur(50px);
+}
+
+/* Right blue glow effect */
+.con::after {
+    background: #3d9eff; /* Neon blue */
+    right: -30px;
+    bottom: -40px;
+    filter: blur(50px);
+}
+
+/* Clock digits container */
+.clock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Spacing between hours, minutes, and seconds */
+}
+
+/* Styling for each time unit (Hours, Minutes, Seconds) */
+.clock span {
+    font-size: 70px;  /* Large font for readability */
+    font-weight: 600;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1); /* Subtle glow */
+    position: relative;
+    transition: 0.3s ease; /* Smooth transition effect */
+}
+
+/* Hover effect: Slightly enlarges the numbers */
+.clock span:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Labels under numbers (Hours, Mins, Secs) */
+.clock span::after {
+    font-size: 14px;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ddd; /* Light gray for readability */
+}
+
+/* Label for hours */
+#hrs::after {
+    content: 'HOURS';
+}
+
+/* Label for minutes */
+#min::after {
+    content: 'MINS';
+}
+
+/* Label for seconds */
+#sec::after {
+    content: 'SECS';
+}
+
+/* 📌 Responsive Styling for Smaller Screens */
+@media (max-width: 600px) {
+    .clock span {
+        font-size: 50px; /* Reduce font size for mobile */
+        padding: 8px 15px;
+    }
+
+    .clock span::after {
+        font-size: 12px; /* Adjust label size */
+    }
+}
